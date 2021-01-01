@@ -15,6 +15,7 @@ bool checkAlpha(string key) {
 }
 // for create operation 
 // use syntax "create(key_name,value,timeout_value)" timeout is optional you can continue by passing two arguments without timeout
+
 void creatOperation(string key,long long value,int timeout=0) {
     if(dict.find(key) != dict.end())
         cout<<"error: this key already exists\n";
@@ -77,7 +78,7 @@ void Delete(string key)    {
         pair<int,int>b = dict[key];
         if (b.second != 0)  {
             time_t result = time(nullptr);
-            if (result < b.second) {        // comparing the current time with expiry time
+            if (result < b.second) {        // comparing time
                 dict.erase(key);
                 cout<<"key is successfully deleted\n";    
             }
@@ -122,7 +123,7 @@ int main()  {
                     cin>>key;
                     Delete(key);
                     break; 
-            default: printf("Choice other than 1, 2 and 3"); 
+            default: cout<<"Choice other than 1, 2 and 3"; 
                         break;   
         } 
     }
